@@ -74,6 +74,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * even though getToken and getCode redirect to login page, spotify has single sign on mechanism so user only needs to login once.
+     *we're aiming to use implicit grant flow, so getCode doesn't seem necessary but oh well
+     *
      * Get token from Spotify
      * This method will open the Spotify login activity and get the token
      * What is token?
@@ -97,6 +100,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
+     * In summary, this method handles the result of the authentication activity launched for obtaining an access token or authorization code. It retrieves the relevant data from the result, such as the access token or authorization code, and updates the UI accordingly.
+     *
      * When the app leaves this activity to momentarily get a token/code, this function
      * fetches the result of that external activity to get the response from Spotify
      */
@@ -154,6 +159,21 @@ public class MainActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 }
             }
+
+
+            /*EXAMPLE of how to extract the id value and display it in the profileTextView
+             public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    final JSONObject jsonObject = new JSONObject(response.body().string());
+                    setTextAsync(jsonObject.getString("id"), profileTextView);
+                } catch (JSONException e) {
+                    Log.d("JSON", "Failed to parse data: " + e);
+                    Toast.makeText(MainActivity.this, "Failed to parse data, watch Logcat for more details",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }*/
+
+
         });
     }
 
