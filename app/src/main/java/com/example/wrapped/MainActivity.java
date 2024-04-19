@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,6 +64,19 @@ public class MainActivity extends AppCompatActivity {
         trackTextView = (TextView) findViewById(R.id.top_tracks_text_view);
         genreTextView = (TextView) findViewById(R.id.top_genres_text_view);
         recArtistTextView = (TextView) findViewById(R.id.rec_artists_text_view);
+
+        getStarted.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TopArtistsActivity.class);
+                intent.putExtra("topArtists", topArtists);
+                intent.putExtra("topArtistPics", topArtistPics);
+                intent.putExtra("recArtists", recArtists);
+                intent.putExtra("topGenres", topGenres);
+                intent.putExtra("topTracks", topTracks);
+                startActivity(intent);
+            }
+        });
 
         getToken();
     }

@@ -26,6 +26,17 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".TopArtistsActivity">
+        </activity>
+        <activity android:name=".RecArtistsActivity">
+        </activity>
+        <activity android:name=".TopGenresActivity">
+        </activity>
+        <activity android:name=".TopTracksActivity">
+        </activity>
+        <activity android:name=".SummaryActivity">
+        </activity>
+
     </application>
 
 </manifest>
