@@ -18,29 +18,29 @@
             android:layout_margin="8dp"
             tools:text="Token:" />
 
-        <Button
-            android:id="@+id/token_btn"
+        <TextView
+            android:id="@+id/top_artists_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="Request Token" />
+            android:textSize="10sp"
+            tools:text="Line 1\nLine 2\nLine 3" />
 
         <TextView
-            android:id="@+id/code_text_view"
+            android:id="@+id/top_tracks_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            tools:text="Code:" />
-
-        <Button
-            android:id="@+id/code_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="Request Code" />
+            android:textSize="10sp"
+            tools:text="Line 1\nLine 2\nLine 3" />
 
         <TextView
-            android:id="@+id/response_text_view"
+            android:id="@+id/top_genres_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            tools:text="Line 1\nLine 2\nLine 3" />
+
+        <TextView
+            android:id="@+id/rec_artists_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="10sp"
@@ -51,13 +51,13 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/profile_btn"
+                android:id="@+id/start_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:text="Get User Profile" />
+                android:text="Get Started" />
         </LinearLayout>
     </LinearLayout>
 
