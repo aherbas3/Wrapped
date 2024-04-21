@@ -32,8 +32,10 @@ import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
@@ -51,8 +53,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView artistTextView, trackTextView, genreTextView, recArtistTextView;
 
     public String[] topArtists, topTracks, topGenres,
-            topArtistPics, topTrackIds, topArtistIds, recArtists;
-
+            topArtistPics, topTrackIds, topArtistIds, recArtists,trackURIs;
     String artistReqUrl;
 
     @Override
@@ -74,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("recArtists", recArtists);
                 intent.putExtra("topGenres", topGenres);
                 intent.putExtra("topTracks", topTracks);
+                intent.putExtra("trackURIs",trackURIs);
+                intent.putExtra("token",mAccessToken);
                 startActivity(intent);
             }
         });
@@ -194,6 +197,7 @@ public class MainActivity extends AppCompatActivity {
 
                     topTracks = new String[5];
                     topTrackIds = new String[5];
+                    trackURIs = new String[5];
 
                     // Iterate through each track object in the items array
                     for (int i = 0; i < itemsArray.length(); i++) {
@@ -202,6 +206,8 @@ public class MainActivity extends AppCompatActivity {
                         topTracks[i] = trackName;
                         String trackId = trackObject.getString("id");
                         topTrackIds[i] = trackId;
+                        String trackUri = trackObject.getString("uri");
+                        trackURIs[i] = trackUri;
                     }
 
                     String joinedTrackNames = String.join(", ", topTracks);
@@ -364,7 +370,7 @@ public class MainActivity extends AppCompatActivity {
     private AuthorizationRequest getAuthenticationRequest(AuthorizationResponse.Type type) {
         return new AuthorizationRequest.Builder(CLIENT_ID, type, getRedirectUri().toString())
                 .setShowDialog(false)
-                .setScopes(new String[] { "user-read-email", "user-top-read" }) // <--- Change the scope of your requested token here
+                .setScopes(new String[] { "user-read-email", "user-top-read", "user-modify-playback-state" }) // <--- Change the scope of your requested token here
                 .setCampaign("your-campaign-token")
                 .build();
     }
