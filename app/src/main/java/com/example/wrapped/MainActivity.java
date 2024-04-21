@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
                         for (int j = 0; j < imagesArray.length(); j++) {
                             JSONObject imageObject = imagesArray.getJSONObject(j);
                             int imageHeight = imageObject.getInt("height");
-                            if (imageHeight == 160) {
+                            if (imageHeight == 640) {
                                 String imageUrl = imageObject.getString("url");
                                 topArtistPics[i] = imageUrl;
                             }
@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
 
                     String joinedArtistNames = String.join(", ", topArtists);
 
-                    artistReqUrl = "https://api.spotify.com/v1/recommendations?limit=5&seed_artists=" +
+                    artistReqUrl = "https://api.spotify.com/v1/recommendations?limit=20&seed_artists=" +
                             String.join(",", topArtistIds);
 
                     setTextAsync(joinedArtistNames, artistTextView);
